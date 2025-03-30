@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfApp1.errorWindow"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Ошибка"
+        Background="Transparent" AllowsTransparency="True" WindowStyle="None"
+        Width="320" Height="200" MinWidth="320" MinHeight="200"
+        WindowStartupLocation="CenterOwner">
+
+    <Grid>
+        <Border Background="#F08080" CornerRadius="15" Padding="20" BorderThickness="2" BorderBrush="#FFE4E1">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <!-- Кнопка закрытия в верхнем правом углу -->
+                <Button x:Name="CloseButton" Content="✖" Width="30" Height="30"
+                        Background="Transparent" Foreground="#B22222" FontSize="16"
+                        HorizontalAlignment="Right" BorderThickness="0" Cursor="Hand"
+                        Click="CloseButton_Click" RenderTransformOrigin="1.264,0.44"/>
+
+                <!-- Заголовок ошибки -->
+                <TextBlock Text="❗️Ошибка❗️" Foreground="#FFE4E1" FontSize="18" 
+                           FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                <!-- Сообщение об ошибке -->
+                <TextBlock x:Name="ErrorMessageText" Text="Сообщение об ошибке" 
+                           Foreground="#FFE4E1" FontSize="14" TextAlignment="Center" 
+                           TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+                <!-- Кнопка закрытия -->
+                <Button Content="Закрыть" Width="120" Height="40" Background="#FFE4E1"
+                        Foreground="#B22222" FontSize="14" FontWeight="Bold"
+                        BorderThickness="0" 
+                        Margin="0,10,0,0" Cursor="Hand" Click="CloseButton_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
