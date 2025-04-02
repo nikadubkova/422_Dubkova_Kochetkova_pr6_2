@@ -8,41 +8,61 @@
         Width="400" Height="350"
         WindowStartupLocation="CenterScreen"
         MouseLeftButtonDown="Window_MouseLeftButtonDown">
-    <Grid Margin="0,0,0,70">
-        <Border Background="#AFEEEE" CornerRadius="15" Padding="15">
-            <StackPanel>
-                <!-- Заголовок с кнопкой закрытия -->
-                <DockPanel>
-                    <TextBlock Text="👥 Список пользователей" 
-                               Foreground="#BA55D3" FontSize="16" FontWeight="Bold"
-                               VerticalAlignment="Center"/>
-                    <Button Content="✖" Width="25" Height="25" 
-                            Background="Transparent" Foreground="#FFC0CB"
-                            FontSize="16" FontWeight="Bold"
-                            Click="CloseButton_Click"
-                            HorizontalAlignment="Right"/>
-                </DockPanel>
+    <Grid>
+        <Border Background="#AFEEEE" CornerRadius="15" Padding="20" Margin="-113,20,-90,20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Заголовок и кнопка закрытия -->
+                <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right">
+                    <Button x:Name="CloseButton" Content="✖" Width="30" Height="30"
+                            Background="Transparent" Foreground="#FFC0CB" FontSize="16"
+                            BorderThickness="0" Cursor="Hand" Click="CloseButton_Click"/>
+                </StackPanel>
+
+                <!-- Приветствие -->
+                <TextBlock x:Name="WelcomeTextBlock" Grid.Row="1" Text="Добро пожаловать!" 
+                           Foreground="#BA55D3" FontSize="20" FontWeight="Bold"
+                           Margin="0,0,0,20"/>
 
                 <!-- Таблица пользователей -->
-                <DataGrid x:Name="DataGridUsers" 
-                          Background="#E6E6FA" Foreground="Black"
-                          GridLinesVisibility="None"
-                          AutoGenerateColumns="True"
-                          Height="150" Margin="0,10,0,10"/>
+                <DataGrid x:Name="DataGridUsers" Grid.Row="2" AutoGenerateColumns="False"
+                          Background="#E6E6FA" BorderBrush="#A5D6A7" Margin="0,0,0,20">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding UserID}" Width="Auto"/>
+                        <DataGridTextColumn Header="Логин" Binding="{Binding Username}" Width="*"/>
+                        <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" Width="*"/>
+                        <DataGridTextColumn Header="Роль" Binding="{Binding Role}" Width="*"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                        <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
 
-                <!-- Кнопки управления -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="Добавить" Click="AddButton_Click" 
-                            Background="#DDA0DD" Foreground="Black"
-                            Width="100" Height="30" FontWeight="Bold"/>
-                    <Button Content="Редактировать" Click="EditButton_Click" 
-                            Background="#DDA0DD" Foreground="Black"
-                            Width="100" Height="30" FontWeight="Bold"/>
-                    <Button Content="Удалить" Click="DeleteButton_Click" 
-                            Background="#CD5C5C" Foreground="Black"
-                            Width="100" Height="30" FontWeight="Bold"/>
+                <!-- Панель кнопок -->
+                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="AddButton" Content="Добавить" Width="120" Height="35"
+                            Background="#DDA0DD" Foreground="Black" FontSize="16"
+                            Margin="5" Cursor="Hand" Click="AddButton_Click"/>
+
+                    <Button x:Name="EditButton" Content="Изменить" Width="120" Height="35"
+                            Background="#DDA0DD" Foreground="Black" FontSize="16"
+                            Margin="5" Cursor="Hand" Click="EditButton_Click"/>
+
+                    <Button x:Name="DeleteButton" Content="Удалить" Width="120" Height="35"
+                            Background="#F08080" Foreground="White" FontSize="16"
+                            Margin="5" Cursor="Hand" Click="DeleteButton_Click"/>
+
+                    <Button x:Name="LogoutButton" Content="Выйти" Width="120" Height="35"
+                            Background="Transparent" Foreground="#DDA0DD" FontSize="16"
+                            BorderBrush="#DDA0DD" BorderThickness="1" Margin="5" 
+                            Cursor="Hand" Click="LogoutButton_Click"/>
                 </StackPanel>
-            </StackPanel>
+            </Grid>
         </Border>
     </Grid>
 </Window>

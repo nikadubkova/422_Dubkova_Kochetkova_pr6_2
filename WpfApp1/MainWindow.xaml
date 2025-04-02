@@ -9,16 +9,19 @@
         AllowsTransparency="True" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
     <Grid>
-        <Border Background="#AFEEEE" CornerRadius="15" Padding="20" Margin="20,20,20,40">
+        <Border Background="#AFEEEE" CornerRadius="15" Padding="20" Margin="20">
             <StackPanel>
+                <!-- Кнопка закрытия -->
                 <Button x:Name="CloseButton" Content="✖" Width="30" Height="30"
                         Background="Transparent" Foreground="#FFC0CB" FontSize="16"
                         HorizontalAlignment="Right" VerticalAlignment="Top"
                         BorderThickness="0" Cursor="Hand" Click="CloseButton_Click"/>
 
+                <!-- Заголовок -->
                 <TextBlock Text="🧑🏽‍⚕️ Вход в систему" Foreground="#BA55D3" FontSize="22"
                            FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
 
+                <!-- Поля ввода -->
                 <TextBlock Text="Логин:" Foreground="Black" FontSize="16" Margin="5,5,0,0"/>
                 <TextBox x:Name="LoginTextBox" Width="280" FontSize="16" Height="35"
                          Background="#E8F5E9" BorderBrush="#DDA0DD"/>
@@ -27,10 +30,16 @@
                 <PasswordBox x:Name="PasswordBox" Width="280" Height="35"
                              Background="#E8F5E9" BorderBrush="#DDA0DD"/>
 
+                <!-- Кнопки -->
                 <Button x:Name="LoginButton" Content="Войти" Width="280" Height="45"
                         Background="#DDA0DD" Foreground="Black" FontSize="18"
-                        FontWeight="Bold" Margin="0,15,0,0" Cursor="Hand"
+                        FontWeight="Bold" Margin="0,15,0,10" Cursor="Hand"
                         Click="LoginButton_Click"/>
+
+                <Button x:Name="RegisterButton" Content="Регистрация" Width="280" Height="35"
+                        Background="Transparent" Foreground="#DDA0DD" FontSize="16"
+                        BorderBrush="#DDA0DD" BorderThickness="1" Cursor="Hand"
+                        Click="RegisterButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>
