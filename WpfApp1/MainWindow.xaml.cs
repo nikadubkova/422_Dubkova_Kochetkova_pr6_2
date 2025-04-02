@@ -45,33 +45,32 @@ namespace WpfApp1
             }
         }
 
-        private bool CheckUserCredentials(string login, string hashedPassword, string role)
+        private bool CheckUserCredentials(string login, string hashedPassword)
         {
-            var users = new List<(string Login, string PasswordHash, string Role)>
+            var users = new List<(string Login, string PasswordHash)>
             {
-                    ("admin", HashPassword("admin123"), "Администратор"),
-                    ("dr_ayrapetyan", HashPassword("doctor77"), "Врач"),
-                    ("manager_anna", HashPassword("annacool"), "Менеджер"),
-                    ("patient_olga", HashPassword("helpme"), "Пациент")
+                    ("admin", HashPassword("admin123")),
+                    ("dr_ayrapetyan", HashPassword("doctor77")),
+                    ("manager_anna", HashPassword("annacool")),
+                    ("patient_olga", HashPassword("helpme"))
             };
 
-            return users.Any(u => u.Login == login && u.PasswordHash == hashedPassword && u.Role == role);
+            return users.Any(u => u.Login == login && u.PasswordHash == hashedPassword);
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string login = LoginTextBox.Text;
             string password = PasswordBox.Password;
-            string role = (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
 
-            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
                 ShowError("Заполните все поля!");
                 return;
             }
 
             string hashedPassword = HashPassword(password);
-            bool isValidUser = CheckUserCredentials(login, hashedPassword, role);
+            bool isValidUser = CheckUserCredentials(login, hashedPassword);
 
             if (isValidUser)
             {
